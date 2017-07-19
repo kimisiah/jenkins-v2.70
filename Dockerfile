@@ -33,4 +33,12 @@ ENV PLUGGABLE_SCM_PROVIDER_PATH="/var/jenkins_home/userContent/job_dsl_additiona
 
 RUN /usr/local/bin/plugins.sh /usr/share/jenkins/ref/plugins.txt
 
+RUN mkdir -p $PLUGGABLE_SCM_PROVIDER_PROPERTIES_PATH $PLUGGABLE_SCM_PROVIDER_PATH && chown -R $PLUGGABLE_SCM_PROVIDER_PROPERTIES_PATH $PLUGGABLE_SCM_PROVIDER_PATH
+RUN mkdir -p ${PLUGGABLE_SCM_PROVIDER_PROPERTIES_PATH}/CartridgeLoader ${PLUGGABLE_SCM_PROVIDER_PROPERTIES_PATH}/ScmProviders && chown -R ${PLUGGABLE_SCM_PROVIDER_PROPERTIES_PATH}/CartridgeLoader ${PLUGGABLE_SCM_PROVIDER_PROPERTIES_PATH}/ScmProviders
+RUN chown -R jenkins:jenkins /usr/share/jenkins/ && chown jenkins:jenkins /entrypoint.sh
+RUN chown -R jenkins:jenkins /var/jenkins_home
+
+# Become jenkins for openshift
+User jenkins
+
 ENTRYPOINT ["/entrypoint.sh"]
