@@ -39,6 +39,6 @@ RUN chown -R jenkins:jenkins /usr/share/jenkins/ && chown jenkins:jenkins /entry
 RUN chown -R jenkins:jenkins /var/jenkins_home
 
 # Become jenkins for openshift
-User jenkins
+USER jenkins
 
 ENTRYPOINT ["/entrypoint.sh"]
