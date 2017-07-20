@@ -1,4 +1,4 @@
-FROM jenkinsci/jenkins:2.70
+FROM jenkinsci/jenkins:2.60.1
 
 MAINTAINER Nick Griffin, <nicholas.griffin>
 
